@@ -1,8 +1,7 @@
-## Supermetrics Assignment
-author: Salah Farzin
+## Supermetrics Api (fetch posts and make reports)
 
-Library:
-1. PHPUnit for test purpose
+Used libraries:
+1. PHPUnit for testing purpose
 2. Symfony/Dotenv to load configuration with zero overhead
 
 ### Build and run
