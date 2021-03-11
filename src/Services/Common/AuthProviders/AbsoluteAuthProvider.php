@@ -25,15 +25,15 @@ abstract class AbsoluteAuthProvider implements AuthProviderInterface
      */
     public function __construct(protected ConfigInterface $configs)
     {
-        $this->session = $configs['sessionDriver'];
-        $this->httpClient = $configs['httpClient'];
+        $this->session = $configs->get('sessionDriver');
+        $this->httpClient = $configs->get('httpClient');
     }
 
     /**
      * @param string $key
-     * @return string|null
+     * @return mixed
      */
-    protected function getConfig(string $key): ?string
+    protected function getConfig(string $key): mixed
     {
         return $this->configs->get($key);
     }

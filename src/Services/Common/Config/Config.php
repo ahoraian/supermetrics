@@ -10,9 +10,9 @@ class Config implements ConfigInterface
 
     /**
      * @param $key
-     * @return string|null
+     * @return mixed
      */
-    public function get($key): ?string
+    public function get($key): mixed
     {
         return $this->configs[$key];
     }

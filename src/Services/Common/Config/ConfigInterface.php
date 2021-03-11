@@ -6,9 +6,9 @@ interface ConfigInterface
 {
     /**
      * @param $key
-     * @return string|null
+     * @return mixed
      */
-    public function get(string $key) : ?string;
+    public function get(string $key) : mixed;
 
     /**
      * @param string $key

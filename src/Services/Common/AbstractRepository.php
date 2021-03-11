@@ -24,15 +24,15 @@ class AbstractRepository
      */
     public function __construct(protected ConfigInterface $configs)
     {
-        $this->httpClient = $configs['httpClient'];
-        $this->session = $configs['session'];
+        $this->httpClient = $configs->get('httpClient');
+        $this->session = $configs->get('sessionDriver');
     }
 
     /**
      * @param string $key
-     * @return string|null
+     * @return mixed
      */
-    protected function getConfig(string $key): ?string
+    protected function getConfig(string $key): mixed
     {
         return $this->configs->get($key);
     }
