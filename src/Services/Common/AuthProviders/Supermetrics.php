@@ -34,7 +34,7 @@ class Supermetrics extends AbsoluteAuthProvider
 
                 $data = $response->getBody()['data'];
 
-                // put new token in session driver [e.g: File|Session|...]
+                // put new token in session driver [e.g: File|SessionDriver|...]
                 // lifetime in minutes
                 $tokenLifetime = $this->getConfig('SUPERMETRICS_TOKEN_LIFETIME');
                 $tokenData = [

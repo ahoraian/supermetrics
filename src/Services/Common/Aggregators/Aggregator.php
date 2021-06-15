@@ -21,12 +21,19 @@ class Aggregator
     }
 
     /**
-     * Return all aggregators aggregators
      * @return array
      */
-    public function getList() : array
+    public function getAggregators(): array
     {
         return $this->aggregators;
+    }
+
+    /**
+     * @param array $aggregators
+     */
+    public function setAggregators(array $aggregators): void
+    {
+        $this->aggregators = $aggregators;
     }
 
     /**

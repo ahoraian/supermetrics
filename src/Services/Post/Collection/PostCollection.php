@@ -15,12 +15,12 @@ class PostCollection implements CollectionInterface
 
     /**
      * Add a collection of posts
-     * @param array $posts
+     * @param array $list
      * @return void
      */
-    public function add(array $posts) : void
+    public function add(array $list) : void
     {
-        foreach ($posts as $post) {
+        foreach ($list as $post) {
             array_push($this->posts,
                 new Post([
                     'id' => $post['id'],

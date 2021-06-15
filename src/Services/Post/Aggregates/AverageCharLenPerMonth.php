@@ -13,15 +13,15 @@ class AverageCharLenPerMonth implements AggregatorInterface
     public string $title = 'Average character length of posts per month';
 
     /**
-     * @param CollectionInterface $posts
+     * @param CollectionInterface $data
      * @return array
      */
-    public function apply(CollectionInterface $posts): array
+    public function apply(CollectionInterface $data): array
     {
-        $averages = [];
+        $averages = $totalPostLen = $countMonth = [];
 
         // calculate total adn counts
-        array_map(function($post) use (&$totalPostLen, &$countMonth) {
+        $data->map(function($post) use (&$totalPostLen, &$countMonth) {
             $month = $post->getCreatedTime()->format('Y-m');
 
             if (!isset($totalPostLen[$month])) {
@@ -30,7 +30,7 @@ class AverageCharLenPerMonth implements AggregatorInterface
 
             $totalPostLen[$month] += strlen($post->getMessage());
             $countMonth[$month]++;
-        }, $posts->all());
+        });
 
         // calculate average of total and counts per month
         foreach ($totalPostLen as $month => $lengths) {

@@ -11,7 +11,7 @@ interface AggregatorInterface
      * @param CollectionInterface $data
      * @return array
      */
-    public function apply(CollectionInterface $data) : array;
+    public function apply(CollectionInterface $data): array;
 
     /**
      * Return aggregator title

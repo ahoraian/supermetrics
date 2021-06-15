@@ -6,7 +6,7 @@ $startTime = microtime(true);
 use Symfony\Component\Dotenv\Dotenv;
 use App\Services\Common\Config\Config;
 use App\Services\Post\PostRepository;
-use App\Services\Common\Session\Session;
+use App\Services\Common\Session\SessionDriver;
 use App\Services\Common\HttpClients\CurlClient;
 use App\Services\Common\AuthProviders\Supermetrics;
 use \App\Services\Common\Exceptions\HttpResponseException;
@@ -24,11 +24,11 @@ $dotenv->load(__DIR__ . '/../.env');
  */
 $configs = new Config($_ENV);
 
-// start session when set configuration SESSION_DRIVER=Session
+// start session when set configuration SESSION_DRIVER=SessionDriver
 $sessionDriver = null;
-if ($configs->get('SESSION_DRIVER') == 'Session') {
+if ($configs->get('SESSION_DRIVER') == 'SessionDriver') {
     session_start();
-    $configs->put('sessionDriver', new Session);
+    $configs->put('sessionDriver', new SessionDriver);
 }
 
 /**

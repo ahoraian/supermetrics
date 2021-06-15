@@ -13,14 +13,14 @@ class AveragePostCountPerUserPerMonth implements AggregatorInterface
     public string $title = 'Average number of posts per user per month';
 
     /**
-     * @param CollectionInterface $posts
+     * @param CollectionInterface $data
      * @return array
      */
-    public function apply(CollectionInterface $posts): array
+    public function apply(CollectionInterface $data): array
     {
         $result =  [];
 
-        array_map(function ($post) use (&$userMonthlyPostCounts) {
+        $data->map(function ($post) use (&$userMonthlyPostCounts) {
             $month = $post->getCreatedTime()->format('Y-m');
             $user = $post->getFromId();
 
@@ -31,7 +31,7 @@ class AveragePostCountPerUserPerMonth implements AggregatorInterface
 
             // calc user posts per month
             $userMonthlyPostCounts[$month][$user]++;
-        }, $posts->all());
+        });
 
         // calc averages
         foreach ($userMonthlyPostCounts as $month => $userPosts) {

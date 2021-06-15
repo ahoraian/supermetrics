@@ -19,7 +19,7 @@ abstract class AbsoluteAuthProvider implements AuthProviderInterface
     protected SessionInterface $session;
 
     /**
-     * Set session driver [Session | File | Redis | Memcached | ...]
+     * Set session driver [SessionDriver | File | Redis | Memcached | ...]
      * Supermetrics constructor.
      * @param ConfigInterface $configs
      */

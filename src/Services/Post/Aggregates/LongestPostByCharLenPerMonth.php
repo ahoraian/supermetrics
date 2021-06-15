@@ -13,14 +13,14 @@ class LongestPostByCharLenPerMonth implements AggregatorInterface
     public string $title = 'Longest post by character length per month';
 
     /**
-     * @param CollectionInterface $posts
+     * @param CollectionInterface $data
      * @return array
      */
-    public function apply(CollectionInterface $posts): array
+    public function apply(CollectionInterface $data): array
     {
         $result = [];
 
-        array_map(function ($post) use (&$result) {
+        $data->map(function ($post) use (&$result) {
             $month = $post->getCreatedTime()->format('Y-m');
             $length = strlen($post->getMessage());
 
@@ -31,7 +31,7 @@ class LongestPostByCharLenPerMonth implements AggregatorInterface
             // find largest length (compare large length with each other)
             $result[$month] = max($length, $longest[$month]);
 
-        }, $posts->all());
+        });
 
         return $result;
     }

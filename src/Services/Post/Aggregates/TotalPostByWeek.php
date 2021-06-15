@@ -13,13 +13,13 @@ class TotalPostByWeek implements AggregatorInterface
     public string $title = "Total posts split by week";
 
     /**
-     * @param CollectionInterface $posts
+     * @param CollectionInterface $data
      * @return array
      */
-    public function apply(CollectionInterface $posts): array
+    public function apply(CollectionInterface $data): array
     {
         // get weekly post counts (week number of year)
-        array_map(function($post) use (&$weeklyPostCount) {
+        $data->map(function($post) use (&$weeklyPostCount) {
             $weekInYear = $post->getCreatedTime()->format('Y-W');
 
             if (!isset($weeklyPostCount[$weekInYear])) {
@@ -27,7 +27,7 @@ class TotalPostByWeek implements AggregatorInterface
             }
 
             $weeklyPostCount[$weekInYear]++;
-        }, $posts->all());
+        });
 
         return $weeklyPostCount;
     }

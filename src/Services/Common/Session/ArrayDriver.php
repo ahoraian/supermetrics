@@ -2,14 +2,19 @@
 
 namespace App\Services\Common\Session;
 
-class Session implements SessionInterface
+class ArrayDriver implements SessionInterface
 {
+    /**
+     * @var array
+     */
+    private array $list = [];
+
     /**
      * @inheritDoc
      */
     public function get(string $key): string|array|null
     {
-        return $this->has($key) ? $_SESSION[$key] : null;
+        return $this->has($key) ? $this->list[$key] : null;
     }
 
     /**
@@ -17,7 +22,7 @@ class Session implements SessionInterface
      */
     public function put(string $key, string|array $value): void
     {
-        $_SESSION[$key] = $value;
+        $this->list[$key] = $value;
     }
 
     /**
@@ -25,7 +30,7 @@ class Session implements SessionInterface
      */
     public function has(string $key): bool
     {
-        return array_key_exists($key, $_SESSION);
+        return array_key_exists($key, $this->list);
     }
 
     /**
@@ -34,7 +39,7 @@ class Session implements SessionInterface
     public function remove(string $key)
     {
         if ($this->has($key)) {
-            unset($_SESSION[$key]);
+            unset($this->list[$key]);
         }
     }
 }

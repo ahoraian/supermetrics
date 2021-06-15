@@ -4,6 +4,10 @@ namespace App\Services\Common\Config;
 
 class Config implements ConfigInterface
 {
+    /**
+     * Config constructor.
+     * @param array $configs
+     */
     public function __construct(private array $configs = [])
     {
     }
