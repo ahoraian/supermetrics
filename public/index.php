@@ -26,7 +26,7 @@ $configs = new Config($_ENV);
 
 // start session when set configuration SESSION_DRIVER=SessionDriver
 $sessionDriver = null;
-if ($configs->get('SESSION_DRIVER') == 'SessionDriver') {
+if ($configs->get('SESSION_DRIVER') == 'Session') {
     session_start();
     $configs->put('sessionDriver', new SessionDriver);
 }

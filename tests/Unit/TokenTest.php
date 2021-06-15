@@ -13,16 +13,6 @@ use Throwable;
 class TokenTest extends TestCase
 {
     /**
-     * @var CurlClient
-     */
-    private CurlClient $client;
-
-    /**
-     * @var SessionDriver
-     */
-    private SessionDriver $sessionDriver;
-
-    /**
      * @var Config
      */
     private Config $configs;

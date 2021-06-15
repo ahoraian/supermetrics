@@ -29,4 +29,12 @@ class Config implements ConfigInterface
     {
         $this->configs[$key] = $value;
     }
+
+    /**
+     * @return array
+     */
+    public function all(): array
+    {
+        return $this->configs;
+    }
 }
