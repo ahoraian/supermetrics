@@ -10,6 +10,6 @@ class ArrayResponse extends AbstractResponse
      */
     public function getBody() : ?array
     {
-        return json_decode($this->body, true);
+        return json_decode($this->body, true, flags: JSON_THROW_ON_ERROR);
     }
 }
